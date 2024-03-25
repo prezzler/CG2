@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="libs/lwjgl2/jars/jcuda-0.6.5.jar"/>
+	<classpathentry kind="lib" path="libs/lwjgl2/jars/lwjgl_util.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="Book_BeleuchtungRendering_Auflage_3/libs/lwjgl2/natives-win"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="libs/lwjgl2/jars/lwjgl.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="Book_BeleuchtungRendering_Auflage_3/libs/lwjgl2/natives-win"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="libs/ddogleg-v0.18-libs/ddogleg-0.18-sources.jar"/>
+	<classpathentry kind="lib" path="libs/ddogleg-v0.18-libs/ddogleg-0.18.jar"/>
+	<classpathentry kind="lib" path="libs/ddogleg-v0.18-libs/ejml-cdense-0.39.jar"/>
+	<classpathentry kind="lib" path="libs/ddogleg-v0.18-libs/ejml-core-0.39.jar"/>
+	<classpathentry kind="lib" path="libs/ddogleg-v0.18-libs/ejml-ddense-0.39.jar"/>
+	<classpathentry kind="lib" path="libs/ddogleg-v0.18-libs/ejml-dsparse-0.39.jar"/>
+	<classpathentry kind="lib" path="libs/ddogleg-v0.18-libs/ejml-fdense-0.39.jar"/>
+	<classpathentry kind="lib" path="libs/ddogleg-v0.18-libs/ejml-fsparse-0.39.jar"/>
+	<classpathentry kind="lib" path="libs/ddogleg-v0.18-libs/ejml-simple-0.39.jar"/>
+	<classpathentry kind="lib" path="libs/ddogleg-v0.18-libs/ejml-zdense-0.39.jar"/>
+	<classpathentry kind="lib" path="libs/ddogleg-v0.18-libs/jsr305-3.0.2.jar"/>
+	<classpathentry kind="lib" path="libs/opencv-2.4.13.6-vc14/build/java/opencv-2413.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="Book_BeleuchtungRendering_Auflage_3/libs/opencv-2.4.13.6-vc14/build/java/x86"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
