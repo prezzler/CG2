@@ -5,14 +5,14 @@ import kapitel04.loesungen.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Interpolation_Mouse extends Frame {
+public class Interpolation_GUI_Farbwerte extends Frame {
    
     private int[] clickX = new int[100]; // Array to store X coordinates of the first 3 clicks
     private int[] clickY = new int[100]; // Array to store Y coordinates of the first 3 clicks
     private Color[] color = new Color[100];
     private int clickCount = 0; // Counter to track the number of clicks
 
-    public Interpolation_Mouse(String titel, int w, int h) {
+    public Interpolation_GUI_Farbwerte(String titel, int w, int h) {
         setTitle(titel);
         setSize(w, h);
 
@@ -28,18 +28,20 @@ public class Interpolation_Mouse extends Frame {
                 if (clickCount < 100) {
                     clickX[clickCount] = e.getX();
                     clickY[clickCount] = e.getY();
-                }
-                if (clickCount < 3) {
-                	color[clickCount] = Color.GREEN;
-                }
-                else {
-                	color[clickCount] = interpolation_result();
+                    if (clickCount < 3) {
+//                	color[clickCount] = Color.GREEN;
+                    }
+                    else {
+                    	
+                    	color[clickCount] = interpolation_result();
 //                	color[clickCount] = Color.blue;
-                	
+                    	
+                    }
+                    // Redraw the window to update the drawings
+                    clickCount++;
+                    repaint();
                 }
-                // Redraw the window to update the drawings
-                clickCount++;
-                repaint();
+                System.out.println("Too Many Points (Maximum 100)");
             }
         });
 
@@ -63,33 +65,45 @@ public class Interpolation_Mouse extends Frame {
         // Check if the sum of the areas of the three smaller triangles is equal to the area of the original triangle
         return (totalArea == area1 + area2 + area3);
     }
-
-    
     public Color interpolation_result() {
 		Vektor2D P = new Vektor2D(clickX[clickCount], clickY[clickCount]);
 		
 		Vektor2D A = new Vektor2D(clickX[0],clickY[0]);
 		Vektor2D B = new Vektor2D(clickX[1],clickY[1]);
 		Vektor2D C = new Vektor2D(clickX[2],clickY[2]);
-		double w_a=1, w_b=1, w_c=1; 
+		double a_red = 255, a_green = 0, a_blue = 0;
+		double b_red = 0, b_green = 255, b_blue = 0;
+		double c_red = 0, c_green = 0, c_blue = 255; 
 		
-		boolean result = isInsideTriangle(clickX[0],clickY[0],clickX[1],clickY[1],clickX[2],clickY[2],clickX[clickCount], clickY[clickCount]);
-//		double result = TriangleInterpolation.barycentricInterpolation4(P, A, B, C, w_a, w_b, w_c);
-    	System.out.println(result);
-		if(result == false) {
-    		return Color.RED;
-    	}else {
-    		return Color.YELLOW;
-    	}
+		int result_red   = (int) TriangleInterpolation.barycentricInterpolation4(P, A, B, C, a_red, b_red, c_red);
+		int result_green = (int) TriangleInterpolation.barycentricInterpolation4(P, A, B, C, a_green, b_green, c_green);
+		int result_blue  = (int) TriangleInterpolation.barycentricInterpolation4(P, A, B, C, a_blue, b_blue, c_blue);
+    	
+		System.out.println("Point with RGB:");
+		System.out.println(result_red);
+    	System.out.println(result_green);
+    	System.out.println(result_blue);
+    	System.out.println();
+    	
+		if (result_red > 255 || result_green > 255 || result_blue > 255 || result_red < 0 || result_green < 0
+				|| result_blue < 0) {
+			return Color.black; // Return default color if any component is out of range
+		} else {
+			return new Color(result_red, result_green, result_blue); // Return interpolated color
+		}
+
     		
     }
-    
+   
     public void paint(Graphics g) {
         super.paint(g);
+        color[0] = new Color(255,0,0);
+        color[1] = new Color(0,255,0);
+        color[2] = new Color(0,0,255);
 
         // Draw the first 3 clicks in red
-        g.setColor(Color.GREEN);
         for (int i = 0; i < clickCount; i++) {
+        	g.setColor(color[i]);
             g.fillOval(clickX[i], clickY[i], 10, 10);
         }
 
@@ -104,7 +118,7 @@ public class Interpolation_Mouse extends Frame {
     }
 
     public static void main(String[] args) {
-        Interpolation_Mouse f = new Interpolation_Mouse("Interpolation Mouse!", 500, 500);
+    	Interpolation_GUI_Farbwerte f = new Interpolation_GUI_Farbwerte("Interpolation Farbwerte!", 500, 500);
     }
 }
 
