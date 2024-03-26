@@ -44,7 +44,9 @@ public class tests {
 		for (GenericInterpolator interpol_function : interpolations) {
 			result = interpol_function.apply(inside, t1, t2, t3, value_t1, value_t2, value_t3);
 			assertEquals(expected_inside, result, 0.0001);
+			System.out.print("In" + result + "\n");
 		}
+		
 
 	}
 
@@ -56,6 +58,8 @@ public class tests {
 		for (GenericInterpolator interpol_function : interpolations) {
 			result = interpol_function.apply(outside, t1, t2, t3, value_t1, value_t2, value_t3);
 			assertEquals(expected_outside, result, 0.0001);
+			System.out.print("Out" + result + "\n");
+
 		}
 	}
 
